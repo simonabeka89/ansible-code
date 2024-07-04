@@ -1,0 +1,16 @@
+---
+- hosts: ws
+  become: 1
+  gather_facts: 1
+  ignore_errors: true
+  tasks:
+    - name: Install multiple packages
+      yum:
+        name: "{{ item }}"  # you can also list it in the item in name without the loop
+        state: present
+      loop:                    # you can say with_items or loop
+        - wget
+        - finger
+        - docker
+        - httpd
+        - curl

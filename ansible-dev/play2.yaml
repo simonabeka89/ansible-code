@@ -1,0 +1,37 @@
+---
+- hosts: ws
+  become: yes
+  gather_facts: yes
+  ignore_errors: true  # This will ignore any error irrespective of the task
+  vars:
+    user_name: serge2026
+    group_name: terraform  
+  vars_files:
+    - variables.yaml 
+  tasks:
+    - name: Check server uptime
+      command: "{{ my_command }}"
+      register: my_uptime
+      # ignore_errors: yes  # Uncomment to ignore errors for this particular task
+
+    - name: List directory
+      shell: ls
+
+    - name: Check the kernel version
+      command: uname -r
+      register: kernel_output
+
+    - name: Create user
+      user:
+        name: "{{ user_name }}"
+
+    - name: Create group
+      group:
+        name: "{{ group_name }}"
+
+    - name: Read data
+      debug:  # The debug module is like echo, used to print a message
+        #msg: "hello from my playbook"
+        #var: user_name
+        #var: kernel_output  
+        var: my_uptime.stdout[:19]
