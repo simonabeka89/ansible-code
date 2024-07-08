@@ -29,9 +29,9 @@ pipeline {
                                     makeEmptyDirs: false,
                                     noDefaultExcludes: false,
                                     patternSeparator: '[, ]+',
-                                    remoteDirectory: '/home/ec2-user',
+                                    remoteDirectory: '.',
                                     remoteDirectorySDF: false,
-                                    removePrefix: '/home/ec2-user',
+                                    removePrefix: '',
                                     sourceFiles: 'ansible-${BUILD_ID}.zip' 
                                 )
                             ],
