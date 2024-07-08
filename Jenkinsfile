@@ -32,7 +32,7 @@ pipeline {
                                     remoteDirectory: '/home/ec2-user',
                                     remoteDirectorySDF: false,
                                     removePrefix: '/home/ec2-user',
-                                    sourceFiles: 'ansible-${BUILD_ID}.zip'
+                                    sourceFiles: 'ansible-${BUILD_ID}.zip' 
                                 )
                             ],
                             usePromotionTimestamp: false,
